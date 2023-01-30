@@ -4,5 +4,11 @@
     "Address":"http://zonexecutive.com/action.php/acars/xacars/acars",
     "PIREP" : "http://zonexecutive.com/action.php/acars/xacars/pirep",
     "FlightInfo" : "http://zonexecutive.com/action.php/acars/xacars/data"
+  },
+  {
+    "Name":"TEST ONLY",
+    "Address":"http://test.only/xacars/acars",
+    "PIREP" : "http://test.only/xacars/pirep",
+    "FlightInfo" : "http://test.only/xacars/data"
   }
 ]
