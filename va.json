@@ -1,6 +1,6 @@
 [
   {
-    "Name:":"zonexecutive",
+    "Name":"zonexecutive",
     "Address":"http://zonexecutive.com/action.php/acars/xacars/acars",
     "PIREP" : "http://zonexecutive.com/action.php/acars/xacars/pirep",
     "FlightInfo" : "http://zonexecutive.com/action.php/acars/xacars/data"
