@@ -6,6 +6,12 @@
     "FlightInfo" : "http://zonexecutive.com/action.php/acars/xacars/data"
   },
   {
+    "Name":"air-child",
+    "Address":"http://www.air-child.com/pirep/xacars/liveacars.php",
+    "PIREP" : "http://www.air-child.com/pirep/xacars/pirep.php",
+    "FlightInfo" : "http://www.air-child.com/pirep/xacars/flightdata.php"
+  },
+  {
     "Name":"TEST ONLY",
     "Address":"http://test.only/xacars/acars",
     "PIREP" : "http://test.only/xacars/pirep",
