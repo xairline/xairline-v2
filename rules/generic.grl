@@ -3,5 +3,5 @@ rule Taxi_Speed "Ground speed less than 30kts during taxi" {
         FACT.CurrentLocation.GS < 30
     then
         FACT.AddViolationEvent("Ground speed less than 30kts during taxi");
-        // FACT.Logger.Infof("Cashback given :%v" , FACT);
+        Retract("Taxi_Speed");
 }
