@@ -1,4 +1,4 @@
-rule "Taxi speed" "Ground speed less than 30kts during taxi" {
+rule Taxi_Speed "Ground speed less than 30kts during taxi" {
     when
         FACT.CurrentLocation.GS > 30
     then
