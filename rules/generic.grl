@@ -2,6 +2,6 @@ rule Taxi_Speed "Ground speed less than 30kts during taxi" {
     when
         FACT.CurrentLocation.GS < 30
     then
-        // FACT.AddFlightEvent("Ground speed less than 30kts during taxi",models.ViolationEvent);
-        FACT.Logger.Infof("Cashback given :%v" , FACT);
+        FACT.AddFlightEvent("Ground speed less than 30kts during taxi","event:violation");
+        // FACT.Logger.Infof("Cashback given :%v" , FACT);
 }
