@@ -11,8 +11,8 @@ rule Taxi_Speed "Ground speed less than 30kts during taxi" {
 rule Initial_Climb_Pitch "Initial climb rate too low after takeoff (50-1000ft)" {
     when
         FACT.CurrentLocation.AGL > 50/3.28 &&
-        FACT.CurrentLocation.AGL < 1000/3.28
-        (FACT.CurrentLocation.State == "climb") && 
+        FACT.CurrentLocation.AGL < 1000/3.28 &&
+        FACT.CurrentLocation.State == "climb" && 
         FACT.EventExists("Initial climb rate too low after takeoff (50-1000ft)") == false 
     then
         FACT.AddViolationEvent("Initial climb rate too low after takeoff (50-1000ft)");
