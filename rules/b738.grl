@@ -6,7 +6,7 @@ rule Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
         // FACT.CurrentLocation.Ias > 250 &&
         FACT.EventExists("Overspeed(250kt) with flaps 1") == false 
     then
-        LOG(FACT.FlightStatus.AircraftICAO);
+        FACT.Logger.Infof(FACT.FlightStatus.AircraftICAO);
         FACT.AddViolationEvent("Overspeed(250kt) with flaps 1");
         Retract("Speed_Limit_Flaps_1");
 }
