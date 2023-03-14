@@ -17,7 +17,7 @@ rule Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low after takeoff (50
         FACT.EventExists("Initial climb: pitch too low after takeoff (50-1000ft)") == false 
     then
         FACT.AddViolationEvent("Initial climb: pitch too low after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch");
+        Retract("Initial_Climb_Pitch_Too_Low");
 }
 
 rule Initial_Climb_Pitch_Too_High "Initial climb: pitch too high after takeoff (50-1000ft)" {
@@ -29,5 +29,38 @@ rule Initial_Climb_Pitch_Too_High "Initial climb: pitch too high after takeoff (
         FACT.EventExists("Initial climb: pitch too high after takeoff (50-1000ft)") == false 
     then
         FACT.AddViolationEvent("Initial climb: pitch too high after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch");
+        Retract("Initial_Climb_Pitch_Too_High");
+}
+
+rule Sink_Rate_During_Approach_50 "Sink rate during approach (50-500ft) < -1100" {
+    when
+        FACT.CurrentLocation.Agl > 50/3.28 &&
+        FACT.CurrentLocation.Agl < 500/3.28 &&
+        FACT.CurrentLocation.Vs < -1100 &&
+        FACT.EventExists("Sink rate during approach (50-500ft) < -1100") == false 
+    then
+        FACT.AddViolationEvent("Sink rate during approach (50-500ft) < -1100");
+        Retract("Sink_Rate_During_Approach_50");
+}
+
+rule Sink_Rate_During_Approach_500 "Sink rate during approach (500-1000ft) < -1300" {
+    when
+        FACT.CurrentLocation.Agl > 500/3.28 &&
+        FACT.CurrentLocation.Agl < 1000/3.28 &&
+        FACT.CurrentLocation.Vs < -1300 &&
+        FACT.EventExists("Sink rate during approach (500-1000ft) < -1300") == false 
+    then
+        FACT.AddViolationEvent("Sink rate during approach (500-1000ft) < -1300");
+        Retract("Sink_Rate_During_Approach_500");
+}
+
+rule Sink_Rate_During_Approach_1000 "Sink rate during approach (1000-2000ft) < -1500" {
+    when
+        FACT.CurrentLocation.Agl > 1000/3.28 &&
+        FACT.CurrentLocation.Agl < 2000/3.28 &&
+        FACT.CurrentLocation.Vs < -1500 &&
+        FACT.EventExists("Sink rate during approach (1000-2000ft) < -1500") == false 
+    then
+        FACT.AddViolationEvent("Sink rate during approach (1000-2000ft) < -1500");
+        Retract("Sink_Rate_During_Approach_1000");
 }
