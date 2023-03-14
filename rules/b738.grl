@@ -8,7 +8,7 @@ rule Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
         1 == 1
     then
         FACT.AddViolationEvent("Overspeed(250kt) with flaps 1");
-        FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false);
+        FACT.Logger.Infof(FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false));
         Retract("Speed_Limit_Flaps_1");
 }
 
