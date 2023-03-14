@@ -1,6 +1,6 @@
 rule Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
     when
-        FACT.DatarefSvc.GetFloatValueByDatarefName("sim/aircraft/view/acf_ICAO") == "B738" &&
+        FACT.DatarefSvc.GetStringValueByDatarefName("sim/aircraft/view/acf_ICAO") == "B738" &&
         // FACT.DatarefSvc.GetFloatValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio") > 0.11 &&
         // FACT.DatarefSvc.GetFloatValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio") < 0.13 &&
         // FACT.CurrentLocation.Ias > 250 &&
