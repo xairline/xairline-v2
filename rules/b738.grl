@@ -1,18 +1,19 @@
 rule Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
     when
-        FACT.FlightStatus.AircraftICAO == "B738" &&
+        // FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.DatarefSvc.GetFloatValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio") > 0.11 &&
         // FACT.DatarefSvc.GetFloatValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio") < 0.13 &&
         // FACT.CurrentLocation.Ias > 250 &&
         FACT.EventExists("Overspeed(250kt) with flaps 1") == false 
     then
+        LOG(FACT.FlightStatus.AircraftICAO);
         FACT.AddViolationEvent("Overspeed(250kt) with flaps 1");
         Retract("Speed_Limit_Flaps_1");
 }
 
 rule Speed_Limit_Flaps_2 "Overspeed(250kt) with flaps 2" {
     when
-        FACT.FlightStatus.AircraftICAO == "B738" &&
+        // FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false).Value.GetFloat64() > 0.24 &&
         // FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false).Value.GetFloat64() < 0.26 &&
         // FACT.CurrentLocation.Ias > 250 &&
@@ -24,7 +25,7 @@ rule Speed_Limit_Flaps_2 "Overspeed(250kt) with flaps 2" {
 
 rule Speed_Limit_Flaps_3 "Overspeed(250kt) with flaps 3" {
     when
-        FACT.FlightStatus.AircraftICAO == "B738" &&
+        // FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false).Value.GetFloat64() > 0.36 &&
         // FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false).Value.GetFloat64() < 0.38 &&
         // FACT.CurrentLocation.Ias > 250 &&
@@ -36,7 +37,7 @@ rule Speed_Limit_Flaps_3 "Overspeed(250kt) with flaps 3" {
 
 rule Speed_Limit_Flaps_4 "Overspeed(250kt) with flaps 4" {
     when
-        FACT.FlightStatus.AircraftICAO == "B738" &&
+        // FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false).Value.GetFloat64() > 0.49 &&
         // FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,false).Value.GetFloat64() < 0.51 &&
         // FACT.CurrentLocation.Ias > 250 &&
