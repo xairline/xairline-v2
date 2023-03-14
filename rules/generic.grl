@@ -1,7 +1,7 @@
 rule Taxi_Speed "Ground speed less than 30kts during taxi" {
     when
         FACT.CurrentLocation.GS > 30 &&
-        (FACT.CurrentLocation.State == "taxi_out" || FACT.CurrentLocation.State == "taxi_in") 
+        (FACT.CurrentLocation.State == "taxi_out" || FACT.CurrentLocation.State == "taxi_in") && 
         FACT.EventExists("Speed over 30kts during taxi") == false 
     then
         FACT.AddViolationEvent("Speed over 30kts during taxi");
