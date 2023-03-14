@@ -6,7 +6,7 @@ rule Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
         // FACT.CurrentLocation.Ias > 250 &&
         FACT.EventExists("Overspeed(250kt) with flaps 1") == false 
     then
-        x=FACT.DatarefSvc.GetValueByDatarefName("sim/flightmodel2/controls/flap_handle_deploy_ratio","flap",nil,true).Value;
+        x=FACT.DatarefSvc.GetValueByDatarefName("sim/aircraft/view/acf_ICAO","flap",nil,true).Value;
         FACT.Logger.Infof(x);
         FACT.AddViolationEvent("Overspeed(250kt) with flaps 1");
         Retract("Speed_Limit_Flaps_1");
