@@ -43,5 +43,5 @@ rule Speed_Limit_Flaps_4 "Overspeed(250kt) with flaps 4" {
         FACT.EventExists("Overspeed(250kt) with flaps 4") == false 
     then
         FACT.AddViolationEvent("Overspeed(250kt) with flaps 4");
-        Retract("Speed_Limit_Flaps_4")
+        Retract("Speed_Limit_Flaps_4");
 }
