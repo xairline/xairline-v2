@@ -1,4 +1,4 @@
-rule Speed_Limit_Flaps_1 "Overspeed(80kt) with flaps 1" {B738215
+rule Speed_Limit_Flaps_1 "Overspeed(80kt) with flaps 1" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.FlapRatio > 0.49 &&
