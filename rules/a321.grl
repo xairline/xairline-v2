@@ -1,0 +1,108 @@
+rule A321_Speed_Limit_Flaps_1 "Overspeed(230kt) with flaps 1" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.FlapRatio > 0.249 &&
+        FACT.CurrentLocation.FlapRatio < 0.251 &&
+        FACT.CurrentLocation.Ias > 230 &&
+        FACT.EventExists("Overspeed(230kt) with flaps 1") == false 
+    then
+        FACT.AddViolationEvent("Overspeed(230kt) with flaps 1");
+        Retract("A321_Speed_Limit_Flaps_1");
+}
+
+rule A321_Speed_Limit_Flaps_2 "Overspeed(210kt) with flaps 2" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.FlapRatio > 0.499 &&
+        FACT.CurrentLocation.FlapRatio < 0.501 &&
+        FACT.CurrentLocation.Ias > 210 &&
+        FACT.EventExists("Overspeed(210kt) with flaps 2") == false 
+    then
+        FACT.AddViolationEvent("Overspeed(210kt) with flaps 2");
+        Retract("A321_Speed_Limit_Flaps_2");
+}
+
+rule A321_Speed_Limit_Flaps_3 "Overspeed(190kt) with flaps 3" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.FlapRatio > 0.749 &&
+        FACT.CurrentLocation.FlapRatio < 0.751 &&
+        FACT.CurrentLocation.Ias > 190 &&
+        FACT.EventExists("Overspeed(190kt) with flaps 3") == false 
+    then
+        FACT.AddViolationEvent("Overspeed(190kt) with flaps 3");
+        Retract("A321_Speed_Limit_Flaps_3");
+}
+
+rule A321_Speed_Limit_Flaps_4 "Overspeed(160kt) with flaps 4" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.FlapRatio > 0.99 &&
+        FACT.CurrentLocation.Ias > 160 &&
+        FACT.EventExists("Overspeed(160kt) with flaps 4") == false 
+    then
+        FACT.AddViolationEvent("Overspeed(160kt) with flaps 4");
+        Retract("A321_Speed_Limit_Flaps_4");
+}
+
+rule A321_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.Agl > 50/3.28 &&
+        FACT.CurrentLocation.Agl < 1000/3.28 &&
+        FACT.CurrentLocation.State == "climb" && 
+        FACT.CurrentLocation.Pitch < 10 &&
+        FACT.EventExists("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)") == false 
+    then
+        FACT.AddViolationEvent("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)");
+        Retract("A321_Initial_Climb_Pitch_Too_Low");
+}
+
+rule A321_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.Agl > 50/3.28 &&
+        FACT.CurrentLocation.Agl < 1000/3.28 &&
+        FACT.CurrentLocation.State == "climb" && 
+        FACT.CurrentLocation.Pitch > 22 &&
+        FACT.EventExists("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)") == false 
+    then
+        FACT.AddViolationEvent("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)");
+        Retract("A321_Initial_Climb_Pitch_Too_High");
+}
+
+rule A321_Touchdown_Pitch_Too_High "Touchdown: pitch too high (9 deg)" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.State == "landing" &&
+        FACT.IsTouchdown() &&
+        FACT.CurrentLocation.Pitch > 9 &&
+        FACT.EventExists("Touchdown: pitch too high (9 deg)") == false 
+    then
+        FACT.AddViolationEvent("Touchdown: pitch too high (9 deg)");
+        Retract("A321_Touchdown_Pitch_Too_High");
+}
+
+rule A321_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1.5 deg)" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.State == "landing" &&
+        FACT.IsTouchdown() &&
+        FACT.CurrentLocation.Pitch < 1.5 &&
+        FACT.EventExists("Touchdown: pitch too low (1.5 deg)") == false 
+    then
+        FACT.AddViolationEvent("Touchdown: pitch too low (1.5 deg)");
+        Retract("A321_Touchdown_Pitch_Too_Low");
+}
+
+rule A321_Touchdown_VS_Too_Much "Touchdown: VS (-300ft/min)" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A321" &&
+        FACT.CurrentLocation.State == "landing" &&
+        FACT.IsTouchdown() &&
+        FACT.CurrentLocation.Vs < -300 &&
+        FACT.EventExists("Touchdown: VS (-300ft/min)") == false 
+    then
+        FACT.AddViolationEvent("Touchdown: VS (-300ft/min)");
+        Retract("A321_Touchdown_VS_Too_Much");
+}
