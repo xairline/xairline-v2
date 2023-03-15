@@ -58,16 +58,16 @@ rule A319_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) aft
         Retract("A319_Initial_Climb_Pitch_Too_Low");
 }
 
-rule A319_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)" {
+rule A319_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (20 deg) after takeoff (50-1000ft)" {
     when
         FACT.FlightStatus.AircraftICAO == "A319" &&
         FACT.CurrentLocation.Agl > 50/3.28 &&
         FACT.CurrentLocation.Agl < 1000/3.28 &&
         FACT.CurrentLocation.State == "climb" && 
-        FACT.CurrentLocation.Pitch > 22 &&
-        FACT.EventExists("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)") == false 
+        FACT.CurrentLocation.Pitch > 20 &&
+        FACT.EventExists("Initial climb: pitch too high (20 deg) after takeoff (50-1000ft)") == false 
     then
-        FACT.AddViolationEvent("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)");
+        FACT.AddViolationEvent("Initial climb: pitch too high (20 deg) after takeoff (50-1000ft)");
         Retract("A319_Initial_Climb_Pitch_Too_High");
 }
 
