@@ -137,7 +137,7 @@ rule Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&
         FACT.IsTouchdown() &&
-        FACT.CurrentLocation.Pitch > 1 &&
+        FACT.CurrentLocation.Pitch < 1 &&
         FACT.EventExists("Touchdown: pitch too low (1 deg)") == false 
     then
         FACT.AddViolationEvent("Touchdown: pitch too low (1 deg)");
