@@ -144,14 +144,14 @@ rule Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
         Retract("Touchdown_Pitch_Too_Low");
 }
 
-rule Touchdown_VS_Too_Much "Touchdown: VS (-300ft/min)" {
+rule Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&
         FACT.IsTouchdown() &&
-        FACT.CurrentLocation.Vs < -300 &&
-        FACT.EventExists("Touchdown: VS (-300ft/min)") == false 
+        FACT.CurrentLocation.Vs < -600 &&
+        FACT.EventExists("Touchdown: VS (-600ft/min)") == false 
     then
-        FACT.AddViolationEvent("Touchdown: VS (-300ft/min)");
+        FACT.AddViolationEvent("Touchdown: VS (-600ft/min)");
         Retract("Touchdown_VS_Too_Much");
 }
