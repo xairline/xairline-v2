@@ -8,30 +8,6 @@ rule Taxi_Speed "Ground speed over 30kts during taxi" {
         Retract("Taxi_Speed");
 }
 
-rule Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)" {
-    when
-        FACT.CurrentLocation.Agl > 50/3.28 &&
-        FACT.CurrentLocation.Agl < 1000/3.28 &&
-        FACT.CurrentLocation.State == "climb" && 
-        FACT.CurrentLocation.Pitch < 10 &&
-        FACT.EventExists("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)") == false 
-    then
-        FACT.AddViolationEvent("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch_Too_Low");
-}
-
-rule Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)" {
-    when
-        FACT.CurrentLocation.Agl > 50/3.28 &&
-        FACT.CurrentLocation.Agl < 1000/3.28 &&
-        FACT.CurrentLocation.State == "climb" && 
-        FACT.CurrentLocation.Pitch > 22 &&
-        FACT.EventExists("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)") == false 
-    then
-        FACT.AddViolationEvent("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch_Too_High");
-}
-
 rule Sink_Rate_During_Approach_50 "Sink rate during approach (50-500ft) more than 1100ft/min" {
     when
         FACT.CurrentLocation.Agl > 50/3.28 &&
