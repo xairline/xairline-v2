@@ -2,24 +2,24 @@ rule C172_Speed_Limit_Flaps_1 "Overspeed(80kt) with flaps 1" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.FlapRatio > 0.49 &&
-        1==1 &&
-        // FACT.CurrentLocation.Ias > 100 &&
+        //1==1 &&
+        FACT.CurrentLocation.Ias > 100 &&
         FACT.EventExists("Overspeed(80kt) with flaps 1") == false 
     then
         FACT.AddViolationEvent("Overspeed(80kt) with flaps 1");
-        Retract("Speed_Limit_Flaps_1");
+        Retract("C172_Speed_Limit_Flaps_1");
 }
 
 rule C172_Speed_Limit_Flaps_2 "Overspeed(80kt) with flaps 2" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.FlapRatio > 0.99 &&
-        1==1 &&
-        // FACT.CurrentLocation.Ias > 80 &&
+        //1==1 &&
+        FACT.CurrentLocation.Ias > 80 &&
         FACT.EventExists("Overspeed(80kt) with flaps 2") == false 
     then
         FACT.AddViolationEvent("Overspeed(80kt) with flaps 2");
-        Retract("Speed_Limit_Flaps_2");
+        Retract("C172_Speed_Limit_Flaps_2");
 }
 
 rule C172_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (7 deg) after takeoff (50-1000ft)" {
@@ -28,12 +28,12 @@ rule C172_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (7 deg) afte
         FACT.CurrentLocation.Agl > 50/3.28 &&
         FACT.CurrentLocation.Agl < 1000/3.28 &&
         FACT.CurrentLocation.State == "climb" && 
-        1==1 &&
-        // FACT.CurrentLocation.Pitch < 7 &&
+        //1==1 &&
+        FACT.CurrentLocation.Pitch < 7 &&
         FACT.EventExists("Initial climb: pitch too low (7 deg) after takeoff (50-1000ft)") == false 
     then
         FACT.AddViolationEvent("Initial climb: pitch too low (7 deg) after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch_Too_Low");
+        Retract("C172_Initial_Climb_Pitch_Too_Low");
 }
 
 rule C172_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (15 deg) after takeoff (50-1000ft)" {
@@ -42,12 +42,12 @@ rule C172_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (15 deg) a
         FACT.CurrentLocation.Agl > 50/3.28 &&
         FACT.CurrentLocation.Agl < 1000/3.28 &&
         FACT.CurrentLocation.State == "climb" && 
-        1==1 &&
-        // FACT.CurrentLocation.Pitch > 15 &&
+        //1==1 &&
+        FACT.CurrentLocation.Pitch > 15 &&
         FACT.EventExists("Initial climb: pitch too high (15 deg) after takeoff (50-1000ft)") == false 
     then
         FACT.AddViolationEvent("Initial climb: pitch too high (15 deg) after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch_Too_High");
+        Retract("C172_Initial_Climb_Pitch_Too_High");
 }
 
 rule C172_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
@@ -55,12 +55,12 @@ rule C172_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.State == "landing" &&
         FACT.IsTouchdown() &&
-        1==1 &&
-        // FACT.CurrentLocation.Pitch > 8 &&
+        //1==1 &&
+        FACT.CurrentLocation.Pitch > 8 &&
         FACT.EventExists("Touchdown: pitch too high (8 deg)") == false 
     then
         FACT.AddViolationEvent("Touchdown: pitch too high (8 deg)");
-        Retract("Touchdown_Pitch_Too_High");
+        Retract("C172_Touchdown_Pitch_Too_High");
 }
 
 rule C172_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
@@ -68,12 +68,12 @@ rule C172_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.State == "landing" &&
         FACT.IsTouchdown() &&
-        1==1 &&
-        // FACT.CurrentLocation.Pitch < 1 && 
+        //1==1 &&
+        FACT.CurrentLocation.Pitch < 1 && 
         FACT.EventExists("Touchdown: pitch too low (1 deg)") == false 
     then
         FACT.AddViolationEvent("Touchdown: pitch too low (1 deg)");
-        Retract("Touchdown_Pitch_Too_Low");
+        Retract("C172_Touchdown_Pitch_Too_Low");
 }
 
 rule C172_Touchdown_VS_Too_Much "Touchdown: VS (-80ft/min)" {
@@ -81,10 +81,10 @@ rule C172_Touchdown_VS_Too_Much "Touchdown: VS (-80ft/min)" {
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.State == "landing" &&
         FACT.IsTouchdown() &&
-        1==1 &&
-        // FACT.CurrentLocation.Vs < -80 &&
+        //1==1 &&
+        FACT.CurrentLocation.Vs < -80 &&
         FACT.EventExists("Touchdown: VS (-80ft/min)") == false 
     then
         FACT.AddViolationEvent("Touchdown: VS (-80ft/min)");
-        Retract("Touchdown_VS_Too_Much");
+        Retract("C172_Touchdown_VS_Too_Much");
 }

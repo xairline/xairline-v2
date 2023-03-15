@@ -7,7 +7,7 @@ rule B737_Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
         FACT.EventExists("Overspeed(250kt) with flaps 1") == false 
     then
         FACT.AddViolationEvent("Overspeed(250kt) with flaps 1");
-        Retract("Speed_Limit_Flaps_1");
+        Retract("B738_Speed_Limit_Flaps_1");
 }
 
 rule B737_Speed_Limit_Flaps_2 "Overspeed(230kt) with flaps 2" {
@@ -19,7 +19,7 @@ rule B737_Speed_Limit_Flaps_2 "Overspeed(230kt) with flaps 2" {
         FACT.EventExists("Overspeed(230kt) with flaps 2") == false 
     then
         FACT.AddViolationEvent("Overspeed(230kt) with flaps 2");
-        Retract("Speed_Limit_Flaps_2");
+        Retract("B738_Speed_Limit_Flaps_2");
 }
 
 rule B737_Speed_Limit_Flaps_3 "Overspeed(225kt) with flaps 3" {
@@ -31,7 +31,7 @@ rule B737_Speed_Limit_Flaps_3 "Overspeed(225kt) with flaps 3" {
         FACT.EventExists("Overspeed(225kt) with flaps 3") == false 
     then
         FACT.AddViolationEvent("Overspeed(225kt) with flaps 3");
-        Retract("Speed_Limit_Flaps_3");
+        Retract("B738_Speed_Limit_Flaps_3");
 }
 
 rule B737_Speed_Limit_Flaps_4 "Overspeed(210kt) with flaps 4" {
@@ -43,7 +43,7 @@ rule B737_Speed_Limit_Flaps_4 "Overspeed(210kt) with flaps 4" {
         FACT.EventExists("Overspeed(210kt) with flaps 4") == false 
     then
         FACT.AddViolationEvent("Overspeed(210kt) with flaps 4");
-        Retract("Speed_Limit_Flaps_4");
+        Retract("B738_Speed_Limit_Flaps_4");
 }
 
 rule B737_Speed_Limit_Flaps_5 "Overspeed(195kt) with flaps 5" {
@@ -55,7 +55,7 @@ rule B737_Speed_Limit_Flaps_5 "Overspeed(195kt) with flaps 5" {
         FACT.EventExists("Overspeed(195kt) with flaps 5") == false 
     then
         FACT.AddViolationEvent("Overspeed(195kt) with flaps 5");
-        Retract("Speed_Limit_Flaps_5");
+        Retract("B738_Speed_Limit_Flaps_5");
 }
 
 rule B737_Speed_Limit_Flaps_6 "Overspeed(190kt) with flaps 6" {
@@ -67,7 +67,7 @@ rule B737_Speed_Limit_Flaps_6 "Overspeed(190kt) with flaps 6" {
         FACT.EventExists("Overspeed(190kt) with flaps 6") == false 
     then
         FACT.AddViolationEvent("Overspeed(190kt) with flaps 6");
-        Retract("Speed_Limit_Flaps_6");
+        Retract("B738_Speed_Limit_Flaps_6");
 }
 
 rule B737_Speed_Limit_Flaps_7 "Overspeed(185kt) with flaps 7" {
@@ -79,7 +79,7 @@ rule B737_Speed_Limit_Flaps_7 "Overspeed(185kt) with flaps 7" {
         FACT.EventExists("Overspeed(185kt) with flaps 7") == false 
     then
         FACT.AddViolationEvent("Overspeed(185kt) with flaps 7");
-        Retract("Speed_Limit_Flaps_7");
+        Retract("B738_Speed_Limit_Flaps_7");
 }
 
 rule B737_Speed_Limit_Flaps_8 "Overspeed(158kt) with flaps 8" {
@@ -90,7 +90,7 @@ rule B737_Speed_Limit_Flaps_8 "Overspeed(158kt) with flaps 8" {
         FACT.EventExists("Overspeed(158kt) with flaps 8") == false 
     then
         FACT.AddViolationEvent("Overspeed(158kt) with flaps 8");
-        Retract("Speed_Limit_Flaps_8");
+        Retract("B738_Speed_Limit_Flaps_8");
 }
 
 
@@ -104,7 +104,7 @@ rule B737_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) aft
         FACT.EventExists("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)") == false 
     then
         FACT.AddViolationEvent("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch_Too_Low");
+        Retract("B738_Initial_Climb_Pitch_Too_Low");
 }
 
 rule B737_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)" {
@@ -117,7 +117,7 @@ rule B737_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) a
         FACT.EventExists("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)") == false 
     then
         FACT.AddViolationEvent("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)");
-        Retract("Initial_Climb_Pitch_Too_High");
+        Retract("B738_Initial_Climb_Pitch_Too_High");
 }
 
 rule B737_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
@@ -129,7 +129,7 @@ rule B737_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
         FACT.EventExists("Touchdown: pitch too high (8 deg)") == false 
     then
         FACT.AddViolationEvent("Touchdown: pitch too high (8 deg)");
-        Retract("Touchdown_Pitch_Too_High");
+        Retract("B738_Touchdown_Pitch_Too_High");
 }
 
 rule B737_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
@@ -141,7 +141,7 @@ rule B737_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
         FACT.EventExists("Touchdown: pitch too low (1 deg)") == false 
     then
         FACT.AddViolationEvent("Touchdown: pitch too low (1 deg)");
-        Retract("Touchdown_Pitch_Too_Low");
+        Retract("B738_Touchdown_Pitch_Too_Low");
 }
 
 rule B737_Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
@@ -153,5 +153,5 @@ rule B737_Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
         FACT.EventExists("Touchdown: VS (-600ft/min)") == false 
     then
         FACT.AddViolationEvent("Touchdown: VS (-600ft/min)");
-        Retract("Touchdown_VS_Too_Much");
+        Retract("B738_Touchdown_VS_Too_Much");
 }
