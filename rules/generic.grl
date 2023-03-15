@@ -1,4 +1,4 @@
-rule Taxi_Speed "Ground speed over 30kts during taxi" {asdf
+rule Taxi_Speed "Ground speed over 30kts during taxi" {
     when
         FACT.CurrentLocation.GS > 30 &&
         (FACT.CurrentLocation.State == "taxi_out" || FACT.CurrentLocation.State == "taxi_in") && 
