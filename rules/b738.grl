@@ -1,4 +1,4 @@
-rule Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
+rule B737_Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.124 &&
@@ -10,7 +10,7 @@ rule Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
         Retract("Speed_Limit_Flaps_1");
 }
 
-rule Speed_Limit_Flaps_2 "Overspeed(230kt) with flaps 2" {
+rule B737_Speed_Limit_Flaps_2 "Overspeed(230kt) with flaps 2" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.249 &&
@@ -22,7 +22,7 @@ rule Speed_Limit_Flaps_2 "Overspeed(230kt) with flaps 2" {
         Retract("Speed_Limit_Flaps_2");
 }
 
-rule Speed_Limit_Flaps_3 "Overspeed(225kt) with flaps 3" {
+rule B737_Speed_Limit_Flaps_3 "Overspeed(225kt) with flaps 3" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.374 &&
@@ -34,7 +34,7 @@ rule Speed_Limit_Flaps_3 "Overspeed(225kt) with flaps 3" {
         Retract("Speed_Limit_Flaps_3");
 }
 
-rule Speed_Limit_Flaps_4 "Overspeed(210kt) with flaps 4" {
+rule B737_Speed_Limit_Flaps_4 "Overspeed(210kt) with flaps 4" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.499 &&
@@ -46,7 +46,7 @@ rule Speed_Limit_Flaps_4 "Overspeed(210kt) with flaps 4" {
         Retract("Speed_Limit_Flaps_4");
 }
 
-rule Speed_Limit_Flaps_5 "Overspeed(195kt) with flaps 5" {
+rule B737_Speed_Limit_Flaps_5 "Overspeed(195kt) with flaps 5" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.624 &&
@@ -58,7 +58,7 @@ rule Speed_Limit_Flaps_5 "Overspeed(195kt) with flaps 5" {
         Retract("Speed_Limit_Flaps_5");
 }
 
-rule Speed_Limit_Flaps_6 "Overspeed(190kt) with flaps 6" {
+rule B737_Speed_Limit_Flaps_6 "Overspeed(190kt) with flaps 6" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.749 &&
@@ -70,7 +70,7 @@ rule Speed_Limit_Flaps_6 "Overspeed(190kt) with flaps 6" {
         Retract("Speed_Limit_Flaps_6");
 }
 
-rule Speed_Limit_Flaps_7 "Overspeed(185kt) with flaps 7" {
+rule B737_Speed_Limit_Flaps_7 "Overspeed(185kt) with flaps 7" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.874 &&
@@ -82,7 +82,7 @@ rule Speed_Limit_Flaps_7 "Overspeed(185kt) with flaps 7" {
         Retract("Speed_Limit_Flaps_7");
 }
 
-rule Speed_Limit_Flaps_8 "Overspeed(158kt) with flaps 8" {
+rule B737_Speed_Limit_Flaps_8 "Overspeed(158kt) with flaps 8" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.FlapRatio > 0.999 &&
@@ -94,7 +94,7 @@ rule Speed_Limit_Flaps_8 "Overspeed(158kt) with flaps 8" {
 }
 
 
-rule Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)" {
+rule B737_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.Agl > 50/3.28 &&
@@ -107,7 +107,7 @@ rule Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) after ta
         Retract("Initial_Climb_Pitch_Too_Low");
 }
 
-rule Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)" {
+rule B737_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.Agl > 50/3.28 &&
@@ -120,7 +120,7 @@ rule Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) after 
         Retract("Initial_Climb_Pitch_Too_High");
 }
 
-rule Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
+rule B737_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&
@@ -132,7 +132,7 @@ rule Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
         Retract("Touchdown_Pitch_Too_High");
 }
 
-rule Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
+rule B737_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&
@@ -144,7 +144,7 @@ rule Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
         Retract("Touchdown_Pitch_Too_Low");
 }
 
-rule Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
+rule B737_Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&

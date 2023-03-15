@@ -1,4 +1,4 @@
-rule Speed_Limit_Flaps_1 "Overspeed(80kt) with flaps 1" {
+rule C172_Speed_Limit_Flaps_1 "Overspeed(80kt) with flaps 1" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.FlapRatio > 0.49 &&
@@ -9,7 +9,7 @@ rule Speed_Limit_Flaps_1 "Overspeed(80kt) with flaps 1" {
         Retract("Speed_Limit_Flaps_1");
 }
 
-rule Speed_Limit_Flaps_2 "Overspeed(80kt) with flaps 2" {
+rule C172_Speed_Limit_Flaps_2 "Overspeed(80kt) with flaps 2" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.FlapRatio > 0.99 &&
@@ -20,7 +20,7 @@ rule Speed_Limit_Flaps_2 "Overspeed(80kt) with flaps 2" {
         Retract("Speed_Limit_Flaps_2");
 }
 
-rule Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (7 deg) after takeoff (50-1000ft)" {
+rule C172_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (7 deg) after takeoff (50-1000ft)" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.Agl > 50/3.28 &&
@@ -33,7 +33,7 @@ rule Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (7 deg) after tak
         Retract("Initial_Climb_Pitch_Too_Low");
 }
 
-rule Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (15 deg) after takeoff (50-1000ft)" {
+rule C172_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (15 deg) after takeoff (50-1000ft)" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.Agl > 50/3.28 &&
@@ -46,7 +46,7 @@ rule Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (15 deg) after 
         Retract("Initial_Climb_Pitch_Too_High");
 }
 
-rule Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
+rule C172_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.State == "landing" &&
@@ -58,7 +58,7 @@ rule Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
         Retract("Touchdown_Pitch_Too_High");
 }
 
-rule Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
+rule C172_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.State == "landing" &&
@@ -70,7 +70,7 @@ rule Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
         Retract("Touchdown_Pitch_Too_Low");
 }
 
-rule Touchdown_VS_Too_Much "Touchdown: VS (-80ft/min)" {
+rule C172_Touchdown_VS_Too_Much "Touchdown: VS (-80ft/min)" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.State == "landing" &&
