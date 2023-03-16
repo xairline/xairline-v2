@@ -6,7 +6,7 @@ rule B737_Speed_Limit_Flaps_1 "Overspeed(250kt) with flaps 1" {
         FACT.CurrentLocation.Ias > 250 &&
         FACT.EventExists("Overspeed(250kt) with flaps 1") == false 
     then
-        FACT.AddViolationEvent("Overspeed(250kt) with flaps 1");
+        FACT.AddViolationEvent("Overspeed(250kt) with flaps 1",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_1");
 }
 
@@ -18,7 +18,7 @@ rule B737_Speed_Limit_Flaps_2 "Overspeed(230kt) with flaps 2" {
         FACT.CurrentLocation.Ias > 230 &&
         FACT.EventExists("Overspeed(230kt) with flaps 2") == false 
     then
-        FACT.AddViolationEvent("Overspeed(230kt) with flaps 2");
+        FACT.AddViolationEvent("Overspeed(230kt) with flaps 2",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_2");
 }
 
@@ -30,7 +30,7 @@ rule B737_Speed_Limit_Flaps_3 "Overspeed(225kt) with flaps 3" {
         FACT.CurrentLocation.Ias > 225 &&
         FACT.EventExists("Overspeed(225kt) with flaps 3") == false 
     then
-        FACT.AddViolationEvent("Overspeed(225kt) with flaps 3");
+        FACT.AddViolationEvent("Overspeed(225kt) with flaps 3",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_3");
 }
 
@@ -42,7 +42,7 @@ rule B737_Speed_Limit_Flaps_4 "Overspeed(210kt) with flaps 4" {
         FACT.CurrentLocation.Ias > 210 &&
         FACT.EventExists("Overspeed(210kt) with flaps 4") == false 
     then
-        FACT.AddViolationEvent("Overspeed(210kt) with flaps 4");
+        FACT.AddViolationEvent("Overspeed(210kt) with flaps 4",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_4");
 }
 
@@ -54,7 +54,7 @@ rule B737_Speed_Limit_Flaps_5 "Overspeed(195kt) with flaps 5" {
         FACT.CurrentLocation.Ias > 195 &&
         FACT.EventExists("Overspeed(195kt) with flaps 5") == false 
     then
-        FACT.AddViolationEvent("Overspeed(195kt) with flaps 5");
+        FACT.AddViolationEvent("Overspeed(195kt) with flaps 5",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_5");
 }
 
@@ -66,7 +66,7 @@ rule B737_Speed_Limit_Flaps_6 "Overspeed(190kt) with flaps 6" {
         FACT.CurrentLocation.Ias > 190 &&
         FACT.EventExists("Overspeed(190kt) with flaps 6") == false 
     then
-        FACT.AddViolationEvent("Overspeed(190kt) with flaps 6");
+        FACT.AddViolationEvent("Overspeed(190kt) with flaps 6",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_6");
 }
 
@@ -78,7 +78,7 @@ rule B737_Speed_Limit_Flaps_7 "Overspeed(185kt) with flaps 7" {
         FACT.CurrentLocation.Ias > 185 &&
         FACT.EventExists("Overspeed(185kt) with flaps 7") == false 
     then
-        FACT.AddViolationEvent("Overspeed(185kt) with flaps 7");
+        FACT.AddViolationEvent("Overspeed(185kt) with flaps 7",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_7");
 }
 
@@ -89,7 +89,7 @@ rule B737_Speed_Limit_Flaps_8 "Overspeed(158kt) with flaps 8" {
         FACT.CurrentLocation.Ias > 158 &&
         FACT.EventExists("Overspeed(158kt) with flaps 8") == false 
     then
-        FACT.AddViolationEvent("Overspeed(158kt) with flaps 8");
+        FACT.AddViolationEvent("Overspeed(158kt) with flaps 8",FACT.CurrentLocation.Ias);
         Retract("B738_Speed_Limit_Flaps_8");
 }
 
@@ -124,7 +124,7 @@ rule B737_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&
-        FACT.IsTouchdown() == true &&
+        FACT.CurrentLocation.GearForce > 1 && 
         FACT.CurrentLocation.Pitch > 8 &&
         FACT.EventExists("Touchdown: pitch too high (8 deg)") == false 
     then
@@ -136,7 +136,7 @@ rule B737_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&
-        FACT.IsTouchdown() == true &&
+        FACT.CurrentLocation.GearForce > 1 && 
         FACT.CurrentLocation.Pitch < 1 &&
         FACT.EventExists("Touchdown: pitch too low (1 deg)") == false 
     then
@@ -148,7 +148,7 @@ rule B737_Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
     when
         FACT.FlightStatus.AircraftICAO == "B738" &&
         FACT.CurrentLocation.State == "landing" &&
-        FACT.IsTouchdown() == true &&
+        FACT.CurrentLocation.GearForce > 1 && 
         FACT.CurrentLocation.Vs < -600 &&
         FACT.EventExists("Touchdown: VS (-600ft/min)") == false 
     then
