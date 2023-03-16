@@ -4,7 +4,7 @@ rule Taxi_Speed "Ground speed over 30kts during taxi" {
         (FACT.CurrentLocation.State == "taxi_out" || FACT.CurrentLocation.State == "taxi_in") && 
         FACT.EventExists("Speed over 30kts during taxi") == false 
     then
-        FACT.AddViolationEvent("Speed over 30kts during taxi");
+        FACT.AddViolationEvent("Speed over 30kts during taxi",FACT.CurrentLocation.GS);
         Retract("Taxi_Speed");
 }
 
@@ -15,7 +15,7 @@ rule Sink_Rate_During_Approach_50 "Sink rate during approach (50-500ft) more tha
         FACT.CurrentLocation.Vs < -1100 &&
         FACT.EventExists("Sink rate during approach (50-500ft) more than 1100ft/min") == false 
     then
-        FACT.AddViolationEvent("Sink rate during approach (50-500ft) more than 1100ft/min");
+        FACT.AddViolationEvent("Sink rate during approach (50-500ft) more than 1100ft/min",FACT.CurrentLocation.Vs);
         Retract("Sink_Rate_During_Approach_50");
 }
 
@@ -26,7 +26,7 @@ rule Sink_Rate_During_Approach_500 "Sink rate during approach (500-1000ft) more 
         FACT.CurrentLocation.Vs < -1300 &&
         FACT.EventExists("Sink rate during approach (500-1000ft) more than 1300ft/min") == false 
     then
-        FACT.AddViolationEvent("Sink rate during approach (500-1000ft) more than 1300ft/min");
+        FACT.AddViolationEvent("Sink rate during approach (500-1000ft) more than 1300ft/min",FACT.CurrentLocation.Vs);
         Retract("Sink_Rate_During_Approach_500");
 }
 
@@ -37,6 +37,6 @@ rule Sink_Rate_During_Approach_1000 "Sink rate during approach (1000-2000ft) mor
         FACT.CurrentLocation.Vs < -1500 &&
         FACT.EventExists("Sink rate during approach (1000-2000ft) more than 1500ft/min") == false 
     then
-        FACT.AddViolationEvent("Sink rate during approach (1000-2000ft) more than 1500ft/min");
+        FACT.AddViolationEvent("Sink rate during approach (1000-2000ft) more than 1500ft/min",FACT.CurrentLocation.Vs);
         Retract("Sink_Rate_During_Approach_1000");
 }
