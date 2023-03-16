@@ -1,23 +1,47 @@
-rule C172_Speed_Limit_Flaps_1 "Overspeed(80kt) with flaps 1" {
+rule C172_Speed_Limit_Flaps_1 "Overspeed(110kt) with flaps 1" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.FlapRatio > 0.49 &&
-        FACT.CurrentLocation.Ias > 100 &&
-        FACT.EventExists("Overspeed(80kt) with flaps 1") == false 
+        FACT.CurrentLocation.Ias > 110 &&
+        FACT.EventExists("Overspeed(110kt) with flaps 1") == false 
     then
-        FACT.AddViolationEvent("Overspeed(80kt) with flaps 1",FACT.CurrentLocation.Ias);
+        FACT.AddViolationEvent("Overspeed(110kt) with flaps 1",FACT.CurrentLocation.Ias);
         Retract("C172_Speed_Limit_Flaps_1");
 }
 
-rule C172_Speed_Limit_Flaps_2 "Overspeed(80kt) with flaps 2" {
+rule C172_Speed_Limit_Flaps_2 "Overspeed(85kt) with flaps 2" {
+    when
+        FACT.FlightStatus.AircraftICAO == "C172" &&
+        FACT.CurrentLocation.FlapRatio > 0.499 &&
+        FACT.CurrentLocation.FlapRatio > 0.501 &&
+        FACT.CurrentLocation.Ias > 85 &&
+        FACT.EventExists("Overspeed(85kt) with flaps 2") == false 
+    then
+        FACT.AddViolationEvent("Overspeed(85kt) with flaps 2",FACT.CurrentLocation.Ias);
+        Retract("C172_Speed_Limit_Flaps_2");
+}
+
+rule C172_Speed_Limit_Flaps_3 "Overspeed(75kt) with flaps 3" {
+    when
+        FACT.FlightStatus.AircraftICAO == "C172" &&
+        FACT.CurrentLocation.FlapRatio > 0.749 &&
+        FACT.CurrentLocation.FlapRatio > 0.751 &&
+        FACT.CurrentLocation.Ias > 75 &&
+        FACT.EventExists("Overspeed(75kt) with flaps 3") == false 
+    then
+        FACT.AddViolationEvent("Overspeed(75kt) with flaps 3",FACT.CurrentLocation.Ias);
+        Retract("C172_Speed_Limit_Flaps_3");
+}
+
+rule C172_Speed_Limit_Flaps_4 "Overspeed(65kt) with flaps 4" {
     when
         FACT.FlightStatus.AircraftICAO == "C172" &&
         FACT.CurrentLocation.FlapRatio > 0.99 &&
-        FACT.CurrentLocation.Ias > 80 &&
-        FACT.EventExists("Overspeed(80kt) with flaps 2") == false 
+        FACT.CurrentLocation.Ias > 65 &&
+        FACT.EventExists("Overspeed(65kt) with flaps 4") == false 
     then
-        FACT.AddViolationEvent("Overspeed(80kt) with flaps 2",FACT.CurrentLocation.Ias);
-        Retract("C172_Speed_Limit_Flaps_2");
+        FACT.AddViolationEvent("Overspeed(65kt) with flaps 4",FACT.CurrentLocation.Ias);
+        Retract("C172_Speed_Limit_Flaps_4");
 }
 
 rule C172_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (7 deg) after takeoff (50-1000ft)" {
