@@ -103,7 +103,7 @@ rule B737_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) aft
         FACT.CurrentLocation.Pitch < 10 &&
         FACT.EventExists("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)") == false 
     then
-        FACT.AddViolationEvent("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)");
+        FACT.AddViolationEvent("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)",FACT.CurrentLocation.Pitch);
         Retract("B738_Initial_Climb_Pitch_Too_Low");
 }
 
@@ -116,7 +116,7 @@ rule B737_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (22 deg) a
         FACT.CurrentLocation.Pitch > 22 &&
         FACT.EventExists("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)") == false 
     then
-        FACT.AddViolationEvent("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)");
+        FACT.AddViolationEvent("Initial climb: pitch too high (22 deg) after takeoff (50-1000ft)",FACT.CurrentLocation.Pitch);
         Retract("B738_Initial_Climb_Pitch_Too_High");
 }
 
@@ -128,7 +128,7 @@ rule B737_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
         FACT.CurrentLocation.Pitch > 8 &&
         FACT.EventExists("Touchdown: pitch too high (8 deg)") == false 
     then
-        FACT.AddViolationEvent("Touchdown: pitch too high (8 deg)");
+        FACT.AddViolationEvent("Touchdown: pitch too high (8 deg)",FACT.CurrentLocation.Pitch);
         Retract("B738_Touchdown_Pitch_Too_High");
 }
 
@@ -140,7 +140,7 @@ rule B737_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
         FACT.CurrentLocation.Pitch < 1 &&
         FACT.EventExists("Touchdown: pitch too low (1 deg)") == false 
     then
-        FACT.AddViolationEvent("Touchdown: pitch too low (1 deg)");
+        FACT.AddViolationEvent("Touchdown: pitch too low (1 deg)",FACT.CurrentLocation.Pitch);
         Retract("B738_Touchdown_Pitch_Too_Low");
 }
 
@@ -152,6 +152,18 @@ rule B737_Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
         FACT.CurrentLocation.Vs < -600 &&
         FACT.EventExists("Touchdown: VS (-600ft/min)") == false 
     then
-        FACT.AddViolationEvent("Touchdown: VS (-600ft/min)");
+        FACT.AddViolationEvent("Touchdown: VS (-600ft/min)",FACT.CurrentLocation.Vs);
         Retract("B738_Touchdown_VS_Too_Much");
+}
+
+rule B738_Touchdown_G_Too_Much "Touchdown: G (1.8 G)" {
+    when
+        FACT.FlightStatus.AircraftICAO == "B738" &&
+        FACT.CurrentLocation.State == "landing" &&
+        FACT.CurrentLocation.GearForce > 1 && 
+        FACT.CurrentLocation.GForce > 1.8 &&
+        FACT.EventExists("Touchdown: G (1.8 G)") == false 
+    then
+        FACT.AddViolationEvent("Touchdown: G (1.8 G)",FACT.CurrentLocation.GForce);
+        Retract("B738_Touchdown_G_Too_Much");
 }

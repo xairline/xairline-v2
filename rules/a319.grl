@@ -54,7 +54,7 @@ rule A319_Initial_Climb_Pitch_Too_Low "Initial climb: pitch too low (10 deg) aft
         FACT.CurrentLocation.Pitch < 10 &&
         FACT.EventExists("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)") == false 
     then
-        FACT.AddViolationEvent("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)");
+        FACT.AddViolationEvent("Initial climb: pitch too low (10 deg) after takeoff (50-1000ft)",FACT.CurrentLocation.Pitch);
         Retract("A319_Initial_Climb_Pitch_Too_Low");
 }
 
@@ -67,7 +67,7 @@ rule A319_Initial_Climb_Pitch_Too_High "Initial climb: pitch too high (20 deg) a
         FACT.CurrentLocation.Pitch > 20 &&
         FACT.EventExists("Initial climb: pitch too high (20 deg) after takeoff (50-1000ft)") == false 
     then
-        FACT.AddViolationEvent("Initial climb: pitch too high (20 deg) after takeoff (50-1000ft)");
+        FACT.AddViolationEvent("Initial climb: pitch too high (20 deg) after takeoff (50-1000ft)",FACT.CurrentLocation.Pitch);
         Retract("A319_Initial_Climb_Pitch_Too_High");
 }
 
@@ -79,7 +79,7 @@ rule A319_Touchdown_Pitch_Too_High "Touchdown: pitch too high (9 deg)" {
         FACT.CurrentLocation.Pitch > 9 &&
         FACT.EventExists("Touchdown: pitch too high (9 deg)") == false 
     then
-        FACT.AddViolationEvent("Touchdown: pitch too high (9 deg)");
+        FACT.AddViolationEvent("Touchdown: pitch too high (9 deg)",FACT.CurrentLocation.Pitch);
         Retract("A319_Touchdown_Pitch_Too_High");
 }
 
@@ -91,7 +91,7 @@ rule A319_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1.5 deg)" {
         FACT.CurrentLocation.Pitch < 1.5 &&
         FACT.EventExists("Touchdown: pitch too low (1.5 deg)") == false 
     then
-        FACT.AddViolationEvent("Touchdown: pitch too low (1.5 deg)");
+        FACT.AddViolationEvent("Touchdown: pitch too low (1.5 deg)",FACT.CurrentLocation.Pitch);
         Retract("A319_Touchdown_Pitch_Too_Low");
 }
 
@@ -103,6 +103,18 @@ rule A319_Touchdown_VS_Too_Much "Touchdown: VS (-300ft/min)" {
         FACT.CurrentLocation.Vs < -300 &&
         FACT.EventExists("Touchdown: VS (-300ft/min)") == false 
     then
-        FACT.AddViolationEvent("Touchdown: VS (-300ft/min)");
+        FACT.AddViolationEvent("Touchdown: VS (-300ft/min)",FACT.CurrentLocation.Vs);
         Retract("A319_Touchdown_VS_Too_Much");
+}
+
+rule A319_Touchdown_G_Too_Much "Touchdown: G (1.8 G)" {
+    when
+        FACT.FlightStatus.AircraftICAO == "A319" &&
+        FACT.CurrentLocation.State == "landing" &&
+        FACT.CurrentLocation.GearForce > 1 && 
+        FACT.CurrentLocation.GForce > 1.8 &&
+        FACT.EventExists("Touchdown: G (1.8 G)") == false 
+    then
+        FACT.AddViolationEvent("Touchdown: G (1.8 G)",FACT.CurrentLocation.GForce);
+        Retract("A319_Touchdown_G_Too_Much");
 }
