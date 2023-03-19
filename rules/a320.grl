@@ -83,17 +83,17 @@ rule A320_Touchdown_Pitch_Too_High "Touchdown: pitch too high (9 deg)" {
         Retract("A320_Touchdown_Pitch_Too_High");
 }
 
-// rule A320_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1.5 deg)" {
-//     when
-//         FACT.FlightStatus.AircraftICAO == "A320" &&
-//         FACT.CurrentLocation.State == "landing" &&
-//         FACT.CurrentLocation.GearForce > 1 && 
-//         FACT.CurrentLocation.Pitch < 1.5 &&
-//         FACT.EventExists("Touchdown: pitch too low (1.5 deg)") == false 
-//     then
-//         FACT.AddViolationEvent("Touchdown: pitch too low (1.5 deg)",FACT.CurrentLocation.Pitch);
-//         Retract("A320_Touchdown_Pitch_Too_Low");
-// }
+ rule A320_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1.5 deg)" {
+     when
+         FACT.FlightStatus.AircraftICAO == "A320" &&
+         FACT.CurrentLocation.State == "landing" &&
+         FACT.IsTouchdown() && 
+         FACT.CurrentLocation.Pitch < 1.5 &&
+         FACT.EventExists("Touchdown: pitch too low (1.5 deg)") == false 
+     then
+         FACT.AddViolationEvent("Touchdown: pitch too low (1.5 deg)",FACT.CurrentLocation.Pitch);
+         Retract("A320_Touchdown_Pitch_Too_Low");
+ }
 
 rule A320_Touchdown_VS_Too_Much "Touchdown: VS (-300ft/min)" {
     when
