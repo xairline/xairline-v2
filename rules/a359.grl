@@ -83,17 +83,17 @@ rule A359_Touchdown_Pitch_Too_High "Touchdown: pitch too high (8 deg)" {
         Retract("A359_Touchdown_Pitch_Too_High");
 }
 
-rule A359_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
-    when
-        FACT.FlightStatus.AircraftICAO == "A359" &&
-        FACT.CurrentLocation.State == "landing" &&
-        FACT.CurrentLocation.GearForce > 1 && 
-        FACT.CurrentLocation.Pitch < 1 &&
-        FACT.EventExists("Touchdown: pitch too low (1 deg)") == false 
-    then
-        FACT.AddViolationEvent("Touchdown: pitch too low (1 deg)",FACT.CurrentLocation.Pitch);
-        Retract("A359_Touchdown_Pitch_Too_Low");
-}
+// rule A359_Touchdown_Pitch_Too_Low "Touchdown: pitch too low (1 deg)" {
+//     when
+//         FACT.FlightStatus.AircraftICAO == "A359" &&
+//         FACT.CurrentLocation.State == "landing" &&
+//         FACT.CurrentLocation.GearForce > 1 && 
+//         FACT.CurrentLocation.Pitch < 1 &&
+//         FACT.EventExists("Touchdown: pitch too low (1 deg)") == false 
+//     then
+//         FACT.AddViolationEvent("Touchdown: pitch too low (1 deg)",FACT.CurrentLocation.Pitch);
+//         Retract("A359_Touchdown_Pitch_Too_Low");
+// }
 
 rule A359_Touchdown_VS_Too_Much "Touchdown: VS (-600ft/min)" {
     when
